@@ -5,6 +5,7 @@ let bodyParser = require('body-parser');
 let handlebars = require('express-handlebars')
     .create({ defaultLayout: 'main'});
 
+
 // configure to use body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -19,11 +20,7 @@ app.set('view engine', 'handlebars');
 app.set('port', process.env.PORT || 3000);
 
 // TODO : routes
-
-app.get('/',function(req,res){
-    let posts = require('./js/posts');
-    res.render('home', { posts: posts.getPostData() });
-});
+require('./routes/routes')(app);
 
 app.use(function(req, res){
     res.status(404);

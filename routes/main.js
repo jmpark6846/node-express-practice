@@ -1,6 +1,9 @@
+let Post = require('../models/post.js');
+
 exports.home = function(req,res){
-    let posts = require('../js/posts');
-    res.render('home', { posts: posts.getPostData() });
+    Post.find((err, posts) => {
+        res.render('home', { posts: posts });    
+    });
 }
 
 exports.newsletter = function(req,res){

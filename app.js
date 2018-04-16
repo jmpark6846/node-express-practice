@@ -21,7 +21,8 @@ app.set('port', process.env.PORT || 3000);
 // TODO : routes
 
 app.get('/',function(req,res){
-    res.render('home');
+    let posts = require('./js/posts');
+    res.render('home', { posts: posts.getPostData() });
 });
 
 app.use(function(req, res){
